@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  vibeweatherapi:
+    image: pedrofsg/api_vibeweather:6.1
+    build:
+      context: ./api
+    ports:
+      - "3000:3000"
+    networks:
+      - shared-network
+    env_file:
+      - var.env
+  vibeweather:
+    image: pedrofsg/front_vibeweather:1.0
+    build:
+      context: ./front
+    ports:
+      - "3001:3001"
+    networks:
+      - shared-network
+    env_file:
+      - var.env
+networks:
+  shared-network:
+    driver: bridge

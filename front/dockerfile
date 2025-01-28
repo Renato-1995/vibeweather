@@ -1,0 +1,11 @@
+# usa a imagem nginx para formar um servidor estatico
+FROM nginx:alpine
+# Define o diretório de trabalho
+WORKDIR /usr/share/nginx/html
+COPY . .
+# Expoe a porta 3001
+EXPOSE 3001
+# faz o routeamento da porta 80 (padrao do nginx) para a porta 3001
+RUN sed -i 's/listen       80;/listen       3001;/g' /etc/nginx/conf.d/default.conf
+# Comando para correr iniciar a api
+CMD ["nginx", "-g", "daemon off;"]

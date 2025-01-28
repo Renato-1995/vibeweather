@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>VibeWeather</title>
+	<link rel="icon" href="favicon.ico">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/d4be5a189a.js" crossorigin="anonymous" async></script>
+
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<main>
+		<form id="searchContainer" onsubmit="userRequest(event)">
+			<input type="text" class="mono" id="getWeatherInput" placeholder="Search...">
+			<i class="fa-solid fa-umbrella" id="getWeather" onclick="userRequest()"></i>
+		</form>
+		<div id="requests">
+			<p id="recents">Recents</p>
+			<div id="requestsBack">
+				<div id="requestsContainer">
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<div id="errorDiv" class="noDisplay">
+		<div id="errorMessage">
+			<button id="errorClose" onclick="closeErrorMessage()">
+				<i class="fa-solid fa-xmark"></i>
+				<span>Close</span>
+			</button>
+			<p id="error">
+				We could not find the weather for 
+				"<b><span id="location"></span></b>"
+			</p>
+			<button id="errorDetails" onclick="showMoreInfo()">
+				<i class="fa-solid fa-circle-info"></i>
+				Error details
+			</button>
+			<p id="errorInfo" class="mono noDisplay"></p>
+		</div>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>

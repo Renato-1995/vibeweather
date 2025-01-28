@@ -1,0 +1,14 @@
+# Usa uma imagem base de Node.js
+FROM node:18
+# Define o diretório de trabalho
+WORKDIR /usr/src/api
+# Copia o package.json e instala as dependências
+COPY package*.json ./
+# instala o node e as dependencias
+RUN npm install
+# Copia os ficheiros para dentro do diretorio defenido em "WORKDIR"
+COPY . .
+# Expoe a porta 3000
+EXPOSE 3000
+# Comando para correr iniciar a api
+CMD ["node", "vibeweather.js"]
